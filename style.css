@@ -1,0 +1,286 @@
+body{
+    background-color: black;
+}
+
+.header_image{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    /* animatie start als de image het scherm verlaat */
+    /* forwards zorgt dat de animatie niet reset als je aan het einde komt */
+    animation: header_image_zoom linear forwards;
+    animation-timeline: view();
+    animation-range: exit;
+}
+
+.nom{
+    position: relative;
+    top: 100vh;
+    height: 250vh;
+}
+
+.nom>h1{
+    text-align: center;
+    position: sticky;
+    font-size: 3em;
+    color: white;
+    opacity: 0;
+    /* sticky houd de tekst op de pagina, 30vh van de bovenkant als je verder scrollt */
+    inset-block-start: 30vh;
+    animation: fade_in linear forwards;
+    animation-timeline: view(100vh 120vh);
+    text-shadow: -1vh -1vh 5vh red, 2vh 2vh 10vh red, 
+    1vh 1vh 15vh red;
+}
+
+.story h1, .exit h1{
+    color: white;
+    font-size: 3em;
+    text-align: center;
+    margin-top: 20vh;
+    margin-bottom: 150vh;
+    text-shadow: 2px 2px black;
+    margin-left: 20vh;
+    margin-right: 20vh;
+}
+
+section p{
+    color: white;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 90vh;
+}
+
+.content{
+    position: relative;
+    top: 200vh;
+    height: 400vh;
+}
+
+.content img{
+    position: sticky;
+    height: 50vh;
+    z-index: 1;
+    opacity: 0;
+
+    inset-block-start: 50vh;
+    animation: turn_on linear forwards;
+    animation-timeline: view(140vh 80vh);
+}
+
+.content p{
+    color: white;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 70vh;
+}
+
+/* select de eerste "a" child van de .proceed class */
+.proceed a:nth-child(1){
+    position: relative;
+    opacity: 0;
+    inset-block-start: 95vh;
+    animation: turn_on linear forwards;
+    animation-timeline: view(-110vh 140vh);
+}
+
+.proceed a:nth-child(2){
+    position: absolute;
+    color: black;
+    margin-left: 65vh;
+    margin-top: 70vh;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.box{
+    height: 520vh;
+}
+
+.split{
+    position: sticky;
+    height: 100vh;
+    width: auto;
+    z-index: -1;
+    top: 0;
+}
+
+.choose-route{
+    display: flex;
+    justify-content: space-around;
+}
+
+.choose-route a{
+    font-size: 7em;
+    color: gray;
+    font-weight: bolder;
+}
+
+a:link, a:visited, a:active{
+    text-decoration: none;
+}
+
+a:hover{
+    color: rgb(204, 204, 27);
+}
+
+/* haalt de data attribute tevoorschijn van de pijl als je er op hovered */
+.choose-route a:hover::before{
+    position: absolute;
+    font-size: 0.3em;
+    color: white;
+    top: 0;
+    content: attr(data-arrow);
+    transform: translateY(475vh);
+}
+
+.death{
+    height: 900vh;
+}
+
+.dead_end{
+    position: sticky;
+    object-fit: fill;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    z-index: -1;
+
+    animation: header_image_zoom linear forwards;
+    animation-timeline: view(0 200vh);
+}
+
+/* selecteert alleen de directe child van de .death class */
+.death>p{
+    position: sticky;
+    height: 50vh;
+    text-align: center;
+    color: rgb(240, 0, 0);
+    text-shadow: 1vh 1vh 100vh rgb(131, 14, 14);
+    font-size: 6em;
+    inset-block-start: 35vh;
+    opacity: 0;
+    animation: fade_in linear forwards;
+    animation-timeline: view(300vh 65vh);
+
+}
+
+.restart{
+    position: sticky;
+    text-align: center;
+    font-size: 2em;
+    inset-block-start: 60vh;
+    opacity: 0;
+    animation: fade_in linear forwards;
+    animation-timeline: view(-90vh 80vh);
+    text-decoration: none;
+    color: white;
+}
+
+.ending{
+    height: 1200vh;
+}
+
+.live{
+    height: 1000vh; 
+    animation: fade_out linear forwards;
+    animation-timeline: view(120vh 900vh);
+    animation-range: enter;
+
+}
+
+.victory{
+    height: 370vh;
+}
+
+.way_out{
+    position: sticky;
+    object-fit: fill;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    z-index: -1;
+
+}
+
+.exit{
+    height: inherit;
+
+}
+
+.exit img:nth-child(1){
+    position: sticky;
+    height: 50vh;
+    inset-block-start: 50vh;
+    z-index: -1;
+}
+
+.dynamite{
+    position: fixed;
+    max-height: 15vh;
+    width: auto;
+    left: 60vh;
+    inset-block-start: 70vh;
+    animation: fade_in linear forwards;
+    animation-timeline: view(-250vh 310vh);
+    opacity: 0;
+    z-index: -1;
+
+}
+
+.victory>img{    
+    position: sticky;
+    object-fit: fill;    
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    animation: turn_on linear forwards;
+    animation-timeline: view(60vh 70vh);
+    z-index: -1;
+
+}
+
+.survived{
+    position: sticky;
+    top: 40vh;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.victory>p{
+    position: relative;
+    color: white;
+    font-size: 4em;
+    text-shadow: 1px 1px 0 black;
+    text-align: center;
+    margin-bottom: 50vh;
+}
+
+/* Keyframes voor alle animaties*/
+@keyframes header_image_zoom{
+    0% {scale: 1;}
+    100% {scale: 8; opacity: 0;}
+}
+
+@keyframes fade_in{
+    from {scale: .8; opacity: 0;}
+    to { scale: 1; opacity: 1;}
+}
+
+/* 0% naar 50% laat de aansteker sneller verschijnen zodat het niet de hele pagina kost om volledig naar 1 opacity te gaan */
+@keyframes turn_on{
+    0%, 50% {opacity: 0;}
+    50%, 100% {opacity: 1;}
+}
+
+@keyframes fade_out{
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
